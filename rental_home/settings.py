@@ -28,12 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY =config('SECRET_KEY'),
-SECRET_KEY="django-insecure-5^2sg_$1*whs70+j1kj1*1ozxp9787_zq&)b5#clrs(2@&&h1s"
+SECRET_KEY=config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =config('DEBUG', default=False, cast=bool),
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -53,11 +53,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'accounts',
     'admin_side',
-    # 'realtors',
     'listings',
-    # 'contacts',
-    # 'notification',
-    # 'chatroom',
     
 ]
 
@@ -109,24 +105,17 @@ ASGI_APPLICATION = "rental_home.asgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE':'django.db.backends.mysql',
-        # 'NAME':config('NAME'),
-        # 'USER':config('USER'), 
-		# 'PASSWORD': config('PASSWORD'),
-        'NAME':'rental_home',
-        'USER':'root',
-        'PASSWORD':'Robin@123',
+        # 'ENGINE':'django.db.backends.mysql',
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME':config('NAME'),
+        'USER':config('USER'), 
+		'PASSWORD': config('PASSWORD'),
 		'HOST':'localhost',
- 		'PORT':'3306',
+ 		'PORT':'',
     }
 
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+
 
 EMAIL_BACKEND=config("EMAIL_BACKEND")
 EMAIL_HOST=config("EMAIL_HOST")
@@ -223,8 +212,8 @@ AUTH_USER_MODEL = 'accounts.UserAccount'
 
 
 SIMPLE_JWT = {
-  'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1440),
-  'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+  'ACCESS_TOKEN_LIFETIME': config('ACCESS_TOKEN_LIFETIME'),
+  'REFRESH_TOKEN_LIFETIME': config('REFRESH_TOKEN_LIFETIME'),
   'ROTATE_REFRESH_TOKENS': False,
   'BLACKLIST_AFTER_ROTATION': True,
   'UPDATE_LAST_LOGIN': False,
