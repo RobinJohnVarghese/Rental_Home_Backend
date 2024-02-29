@@ -13,15 +13,14 @@ django.setup()
 from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
 from channels.security.websocket import AllowedHostsOriginValidator
-from listings.routing import websocket_urlpatterns
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rental_home.settings')
 
 from listings.routing import websocket_urlpatterns as notification_websocket_urlpatterns
 
-django_asgi_app = get_asgi_application()
+django_asgi_application = get_asgi_application()
 
 application = ProtocolTypeRouter({
-    "http": django_asgi_app,
-    'websocket': URLRouter(notification_websocket_urlpatterns)
+    "http": django_asgi_application,
+    'websocket': AllowedHostsOriginValidator(URLRouter(notification_websocket_urlpatterns))
     # Just HTTP for now. (We can add other protocols later.)
 })

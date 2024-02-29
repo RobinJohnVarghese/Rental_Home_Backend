@@ -14,10 +14,8 @@ from pathlib import Path
 import os
 from decouple import config
 from datetime import timedelta
-from rest_framework.authentication import TokenAuthentication
-# from dotenv import load_dotenv
 
-# load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -94,7 +92,7 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'rental_home.wsgi.application'
+
 ASGI_APPLICATION = "rental_home.asgi.application"
 
 
@@ -168,10 +166,10 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'build/static')
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'build/static')
+# ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
