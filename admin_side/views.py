@@ -27,7 +27,9 @@ class AdminLoginView(APIView):
     def post(self, request, format=None):
         email = request.data.get('email')
         password = request.data.get('password')
+        print("user name : ", email, "password : ", password)
         user = authenticate(request, email=email, password=password)
+        print("authenticate : ", user)
         if user is not None and user.is_staff:
             refresh = RefreshToken.for_user(user)
             tokens = {
