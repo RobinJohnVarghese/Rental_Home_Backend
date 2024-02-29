@@ -9,11 +9,12 @@ https://docs.djangoproject.com/en/4.2/howto/deployment/asgi/
 
 import os
 import django
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rental_home.settings')
 django.setup()
 from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
 from channels.security.websocket import AllowedHostsOriginValidator
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rental_home.settings')
+
 
 from listings.routing import websocket_urlpatterns as notification_websocket_urlpatterns
 
