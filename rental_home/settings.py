@@ -206,6 +206,17 @@ CORS_ALLOWED_ORIGINS = [
     
 ]
 
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+]
+
+CORS_ALLOW_HEADERS = [
+    'Content-Type',
+    'Authorization',
+]
 
 
 
