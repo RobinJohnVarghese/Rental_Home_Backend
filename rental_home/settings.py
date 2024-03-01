@@ -33,7 +33,7 @@ DEBUG =config('DEBUG', default=False, cast=bool),
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://rhbackend.robinjohnnvarghese.online']
+CSRF_TRUSTED_ORIGINS = ['https://rhbackend.robinjohnnvarghese.online','https://www.rhbackend.robinjohnnvarghese.online']
 # Application definition
 
 INSTALLED_APPS = [
